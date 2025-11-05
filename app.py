@@ -35,10 +35,13 @@ def contact():
             message.attach(MIMEText(body, 'plain'))
 
             # Send email
-            password = os.environ.get('password')
+            password = os.environ.get('EMAIL_PASSWORD')  # Changed from 'password'
+            if not password:
+                return render_template('contact.html', message='Email service not configured')
+                
             with smtplib.SMTP('smtp.gmail.com', 587) as server:
                 server.starttls()
-                server.login('gowthamgowda414@gmail.com', password) # type: ignore
+                server.login('gowthamgowda414@gmail.com', password)
                 server.send_message(message)
             
             return render_template('contact.html', message='Your message has been sent successfully')
@@ -71,4 +74,4 @@ def ideas():
     return render_template('ideas.html')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=False)
