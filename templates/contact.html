@@ -24,39 +24,51 @@
             <div class="col-lg-8">
                 <div class="card shadow">
                     <div class="card-body p-4">
-                        <form method="POST" action="/contact">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="full_name" class="form-label">Full Name *</label>
-                                    <input type="text" class="form-control" id="full_name" name="full_name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="phone_number" class="form-label">Phone *</label>
-                                    <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email">
-                                </div>
-                                <div class="col-12">
-                                    <label for="service_needed" class="form-label">Service Needed</label>
-                                    <select class="form-select" id="service_needed" name="service_needed">
-                                        <option value="Custom Furniture">Custom Furniture</option>
-                                        <option value="Cabinet Making">Cabinet Making</option>
-                                        <option value="Wood Repair">Wood Repair</option>
-                                        <option value="Interior Plywood">Interior Plywood works</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <label for="project_details" class="form-label">Project Details</label>
-                                    <textarea class="form-control" id="project_details" name="project_details" rows="4"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <!-- Add hidden field for subject -->
+    <input type="hidden" name="_subject" value="New Project Request from Portfolio">
+    
+    <!-- Your existing form fields -->
+    <div class="form-group">
+        <label for="full_name">Full Name *</label>
+        <input type="text" id="full_name" name="full_name" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="phone_number">Phone Number</label>
+        <input type="tel" id="phone_number" name="phone_number">
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="service_needed">Service Needed</label>
+        <select id="service_needed" name="service_needed">
+            <option value="web-development">Furniture</option>
+            <option value="web-design">Wood works</option>
+            <option value="consultation">Plywood works</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="project_details">Project Details</label>
+        <textarea id="project_details" name="project_details" rows="5"></textarea>
+    </div>
+    
+    <!-- Formspree honeypot spam protection -->
+    <input type="text" name="_gotcha" style="display:none">
+    
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+                        {% if message %}
+<div class="alert alert-info">
+    {{ message }}
+</div>
+{% endif %}
                     </div>
                 </div>
             </div>
