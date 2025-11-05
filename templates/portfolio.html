@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Our Works - Manjunath Carpentry{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section class="hero">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Our Portfolio</h1>
+        <p class="lead">See our recent woodwork projects - Click on any image to enlarge</p>
+    </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section>
+    <div class="container">
+        <h2 class="text-center mb-5 display-5">Featured Projects</h2>
+        
+        {% if images %}
+        <div class="row">
+            {% for image in images %}
+            <div class="col-md-6 col-lg-4 mb-4 col-sm-6">
+                <div class="card h-100" >
+                    <img src="{{ url_for('static', filename='images/' + image) }}" 
+                         class="card-img-top portfolio-img clickable-image" 
+                         alt="Our woodwork project"
+                         style="height: 250px; object-fit: cover; cursor: pointer;"
+                         data-bs-toggle="modal" 
+                         data-bs-target="#imageModal"
+                         data-image-src="{{ url_for('static', filename='images/' + image) }}">
+                    <div class="card-body text-center">
+                        <h4>Made by Our Team</h4>
+                        <p class="text-muted">Custom woodwork craftsmanship</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Fallback to sample images if no images found -->
+        <div class="row">
+            {% for project in [
+                {'img': 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&fit=crop&w=600&q=80', 'title': 'Modern Living Room', 'desc': 'Custom sofa and coffee table set'},
+                {'img': 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&fit=crop&w=600&q=80', 'title': 'Kitchen Cabinet', 'desc': 'Complete kitchen makeover'},
+                {'img': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&fit=crop&w=600&q=80', 'title': 'Antique Restoration', 'desc': 'Vintage furniture repair'},
+                {'img': 'https://images.unsplash.com/photo-1582582621959-48d27397dc69?ixlib=rb-4.0.3&fit=crop&w=600&q=80', 'title': 'Office Furniture', 'desc': 'Complete office set'},
+                {'img': 'https://images.unsplash.com/photo-1506891536236-3e07892564b7?ixlib=rb-4.0.3&fit=crop&w=600&q=80', 'title': 'Bedroom Set', 'desc': 'Custom bedroom furniture'},
+                {'img': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&fit=crop&w=600&q=80', 'title': 'Custom Bookshelf', 'desc': 'Wall-to-wall bookshelf'}
+            ] %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <img src="{{ project.img }}" 
+                         class="card-img-top portfolio-img clickable-image" 
+                         alt="{{ project.title }}"
+                         style="cursor: pointer;"
+                         data-bs-toggle="modal" 
+                         data-bs-target="#imageModal"
+                         data-image-src="{{ project.img }}">
+                    <div class="card-body text-center">
+                        <h5>{{ project.title }}</h5>
+                        <p class="text-muted">{{ project.desc }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel">Project View</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImage" src="" alt="Enlarged view" class="img-fluid" style="max-height: 70vh; object-fit: contain;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark m-2" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-5">
+            <div class="bg-light p-5 rounded">
+                <h3>Ready to Start Your Project?</h3>
+                <p class="lead mb-4">Let's create something beautiful together</p>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Get Free Consultation</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Modal -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all clickable images
+    const images = document.querySelectorAll('.clickable-image');
+    const modalImage = document.getElementById('modalImage');
+    
+    // Add click event to each image
+    images.forEach(function(image) {
+        image.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-image-src');
+            modalImage.src = imageSrc;
+        });
+    });
+    
+    // Close modal when clicking outside image
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            const modal = bootstrap.Modal.getInstance(this);
+            modal.hide();
+        }
+    });
+});
+</script>
+
+<style>
+.clickable-image {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clickable-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    border-radius: 0 0 10px 10px;
+}
+</style>
+{% endblock %}

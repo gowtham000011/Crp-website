@@ -1,0 +1,257 @@
+:root {
+  --primary: #8b4513;
+  --secondary: #d2691e;
+}
+* {
+  padding: 2px;
+}
+/* Mobile First Styles */
+body {
+  padding-top: 76px;
+  font-family: "Segoe UI", system-ui;
+  line-height: 1.6;
+  background-image: linear-gradient(to right, #d3eeec, #f1783b);
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: lighter;
+  font-style: normal;
+}
+
+/* Sections */
+section {
+  padding: 4rem 1rem;
+  background-image: linear-gradient(to right, #d3eeec, #f1783b);
+}
+
+/* Cards */
+.card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card {
+  padding: 1.5rem;
+  text-align: center;
+  background-image: linear-gradient(to right, #cfff66, #ffffff);
+}
+/* about  */
+.about-title{
+    font-family: "Cabin";
+    font-weight: 500;
+    font-size: 2rem;
+}
+/* Buttons */
+.btn-primary {
+  background: var(--primary);
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.btn-outline-light {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Portfolio Images */
+.portfolio-img {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+/* contact from  */
+
+/* Navigation */
+.navbar-brand {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+/* Form Styles */
+.form-control,
+.form-select {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 2px solid #e9ecef;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+}
+
+/* Footer */
+footer {
+  background-image: linear-gradient(to right, #d3eeec, #f1783b);
+  font-size: small;
+}
+#footer {
+  margin: 5%;
+}
+
+/* Utility Classes */
+.min-vh-100 {
+  min-height: 100vh !important;
+}
+
+/* Mobile First - then Desktop */
+@media (min-width: 768px) {
+  .hero {
+    padding: 4rem 2rem;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+
+  section {
+    padding: 5rem 2rem;
+  }
+
+  .btn-primary,
+  .btn-outline-light {
+    margin: 0 0.5rem;
+  }
+
+  .text-center-mobile {
+    text-align: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero h1 {
+    font-size: 4rem;
+  }
+}
+.ideas-section {
+  background: #f9f9f9;
+}
+
+.ideas-section h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 600;
+}
+
+.idea-item img {
+  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.idea-item .card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.idea-item .card:hover {
+  transform: scale(1.05);
+}
+#ideasContainer {
+    padding-top: 20px;
+}
+
+/* Style for the idea cards */
+.idea-card .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    border-radius: 12px; /* Rounded corners for a modern look */
+    overflow: hidden;
+}
+
+.idea-card .card:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+/* Make the title stand out */
+.idea-card .card-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #333;
+    min-height: 50px; /* Ensures consistent card height */
+}
+
+/* Style the search bar input */
+#ideaSearch {
+    border-radius: 50px !important;
+    padding: 15px 25px;
+}
+.search-container {
+    width: 100%; /* Full width on mobile */
+    max-width: 600px; /* Limits size on desktop for a cleaner look */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Styling the input field itself */
+#ideaSearch {
+    /* Resetting some Bootstrap defaults for a cleaner look */
+    border-radius: 8px; /* Slightly rounded corners */
+    border: 1px solid #ced4da; /* Simple, light border */
+    padding: 10px 15px; /* Reduced vertical padding for a thinner bar */
+    font-size: 1rem; /* Standard font size */
+    box-shadow: none !important; /* Remove the heavy Bootstrap shadow */
+    transition: border-color 0.3s ease;
+    height: auto; /* Ensure it collapses nicely on mobile */
+}
+
+/* 3. Focus state (what happens when a user clicks it) */
+#ideaSearch:focus {
+    border-color: #007bff; /* A simple blue highlight */
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25); /* Subtle focus glow */
+}
+
+.review{
+  background-image: linear-gradient(to right, #d3eeec, #ffac83);
+}
+.customer-review{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin: 2% 0 5% 0;
+}
+*{
+  font-family: "Cabin",sans-serif;
+  font-weight: 800;
+}

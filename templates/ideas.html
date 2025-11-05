@@ -1,0 +1,1550 @@
+{% extends "base.html" %}
+
+{% block title %}Look for Ideas - Manjunath Carpentry{% endblock %}
+
+{% block content %}
+{% block head_extra %}
+<script>
+    // Existing filterIdeas function remains the main search tool
+    function filterIdeas() {
+
+        const searchInput = document.getElementById('ideaSearch').value.toLowerCase();
+        const cards = document.querySelectorAll('.idea-card');
+
+        cards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const category = card.getAttribute('data-category').toLowerCase();
+
+            if (title.includes(searchInput) || category.includes(searchInput)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // NEW function for category buttons
+    function filterByCategory(categoryFilter) {
+        // Clear the search box when using category buttons
+        document.getElementById('ideaSearch').value = '';
+        const categoryLower = categoryFilter.toLowerCase();
+        const cards = document.querySelectorAll('.idea-card');
+
+        cards.forEach(card => {
+            const cardCategory = card.querySelector('.card-text').textContent.toLowerCase();
+
+            if (categoryFilter === '' || cardCategory.includes(categoryLower)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+{% endblock %}
+<div class="container py-5" style="margin-top: 56px;">
+    <h1 class="text-center mb-4">Find Your Perfect Design Idea</h1>
+    <p class="text-center lead">Browse through our categorized ideas or use the search bar to find exactly what you're
+        looking for, complete with beautiful images!</p>
+    <div class="d-flex flex-wrap justify-content-center mb-4">
+        <button class="btn btn-outline-dark m-2" onclick="filterByCategory('')">All Ideas</button>
+        <button class="btn btn-outline-secondary m-2" onclick="filterByCategory('Living Room')">Living Room</button>
+        <button class="btn btn-outline-secondary m-2" onclick="filterByCategory('Bedroom')">Bedroom</button>
+        <button class="btn btn-outline-secondary m-2" onclick="filterByCategory('Kitchen')">Kitchen</button>
+        <button class="btn btn-outline-secondary m-2" onclick="filterByCategory('Entryway')">Entryway</button>
+        <button class="btn btn-outline-secondary m-2" onclick="filterByCategory('Decor')">Decor & Small Items</button>
+    </div>
+    <div class="search-container mb-4">
+        <input type="text" id="ideaSearch" class="form-control" placeholder="Search(door,table,wardrobe,kitchen...)"
+            onkeyup="filterIdeas()">
+    </div>
+
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="ideasContainer">
+
+
+
+        <!-- living room -->
+
+
+
+
+        <div class="col idea-card" data-category="Coffee, table, rustic, slab, living room, wood, thick">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/coffee-01.jpg') }}', 'Coffee Table – Rustic Slab Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/coffee-01.jpg') }}" class="card-img-top"
+                        alt="Rustic Slab Coffee Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Coffee Table – Rustic Slab Style</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Coffee, table, glass, wood, base, modern, light">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/coffee-02.jpg') }}', 'Coffee Table – Glass Top with Wooden Base'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/coffee-02.jpg') }}" class="card-img-top"
+                        alt="Glass Top Coffee Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Coffee Table – Glass Top with Wooden Base</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Coffee, table, pallet, low, reclaimed, industrial">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/coffee-03.jpg') }}', 'Coffee Table – Pallet-Style Low Table'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/coffee-03.jpg') }}" class="card-img-top"
+                        alt="Pallet Style Coffee Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Coffee Table – Pallet-Style Low Table</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="TV, stand, floating, wall-mounted, space-saving, sleek">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/tv-01.jpg') }}', 'TV Stand – Floating Wall-Mounted'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/tv-01.jpg') }}" class="card-img-top"
+                        alt="Floating TV Stand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">TV Stand – Floating Wall-Mounted</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="TV, stand, cabinet, minimalist, modern, sleek">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/tv-02.jpg') }}', 'TV Stand – Minimalist Modern Cabinet'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/tv-02.jpg') }}" class="card-img-top"
+                        alt="Minimalist TV Stand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">TV Stand – Minimalist Modern Cabinet</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="TV, stand, unit, vintage, traditional, wooden">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/tv-03.jpg') }}', 'TV Stand – Vintage-Style Wooden Unit'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/tv-03.jpg') }}" class="card-img-top"
+                        alt="Vintage Wooden TV Unit" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">TV Stand – Vintage-Style Wooden Unit</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bookshelf, ladder, shelves, storage, leaning, display">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/book-01.jpg') }}', 'Bookshelf – Ladder-Style Shelves'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/book-01.jpg') }}" class="card-img-top"
+                        alt="Ladder Bookshelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bookshelf – Ladder-Style Shelves</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bookshelf, built-in, wall unit, library, custom">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/book-02.jpg') }}', 'Bookshelf – Built-in Wall Unit'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/book-02.jpg') }}" class="card-img-top"
+                        alt="Built-in Bookshelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bookshelf – Built-in Wall Unit</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bookshelf, modular, cube, shelves, flexible, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/book-03.jpg') }}', 'Bookshelf – Modular Cube Shelves'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/book-03.jpg') }}" class="card-img-top"
+                        alt="Modular Bookshelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bookshelf – Modular Cube Shelves</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Accent, chair, wooden, frame, cushions, seating">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/chair-01.jpg') }}', 'Accent Chair – Wooden Frame with Cushions'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/chair-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Frame Accent Chair" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Accent Chair – Wooden Frame with Cushions</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Accent, chair, carved, statement, traditional, artistic">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/chair-02.jpg') }}', 'Accent Chair – Carved Statement Chair'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/chair-02.jpg') }}" class="card-img-top"
+                        alt="Carved Statement Chair" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Accent Chair – Carved Statement Chair</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Side, table, nested, space-saving, set, compact">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/side-01.jpg') }}', 'Side Table – Nested Tables'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/side-01.jpg') }}" class="card-img-top"
+                        alt="Nested Side Tables" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Side Table – Nested Tables</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Side, table, geometric, design, modern, abstract">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/side-02.jpg') }}', 'Side Table – Geometric Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/side-02.jpg') }}" class="card-img-top"
+                        alt="Geometric Side Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Side Table – Geometric Design</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Side, table, carved, wooden, top, traditional, artisan">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/side-03.jpg') }}', 'Side Table – Carved Wooden Top'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/side-03.jpg') }}" class="card-img-top"
+                        alt="Carved Wooden Side Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Side Table – Carved Wooden Top</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Storage, bench, upholstered, seating, living room, entryway">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/bench-01.jpg') }}', 'Storage Bench – Upholstered Top with Storage'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/bench-01.jpg') }}" class="card-img-top"
+                        alt="Upholstered Storage Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Storage Bench – Upholstered Top with Storage</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+        <div class="col idea-card" data-category="Storage, bench, upholstered, seating, living room, entryway">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/bench-03.jpg') }}', 'Storage Bench – Upholstered Top with Storage'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/bench-03.jpg') }}" class="card-img-top"
+                        alt="Upholstered Storage Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Storage Bench – Upholstered Top with Storage</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+        <div class="col idea-card" data-category="Storage, bench, upholstered, seating, living room, entryway">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/bench-02.jpg') }}', 'Storage Bench – Upholstered Top with Storage'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/bench-02.jpg') }}" class="card-img-top"
+                        alt="Upholstered Storage Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Storage Bench – Upholstered Top with Storage</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Media, console, low, wide, entertainment, storage, TV">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/media-01.jpg') }}', 'Media Console – Low Wide Unit'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/media-01.jpg') }}" class="card-img-top"
+                        alt="Low Wide Media Console" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">TV unit</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+        <div class="col idea-card" data-category="Media, console, low, wide, entertainment, storage, TV">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/media-02.jpg') }}', 'Media Console – Low Wide Unit'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/media-02.jpg') }}" class="card-img-top"
+                        alt="Low Wide Media Console" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">TV unit</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+        <div class="col idea-card" data-category="Media, console, low, wide, entertainment, storage, TV">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/media-03.jpg') }}', 'Media Console – Low Wide Unit'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/media-03.jpg') }}" class="card-img-top"
+                        alt="Low Wide Media Console" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">TV unit</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wall-mounted, floating, shelf, decorative, display, minimal">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/shelf-01.jpg') }}', 'Wall-Mounted Floating Shelf – Decorative'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/shelf-01.jpg') }}" class="card-img-top"
+                        alt="Decorative Floating Shelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wall-Mounted Floating Shelf – Decorative</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wall-mounted, floating, shelf, functional, heavy duty, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/shelf-02.jpg') }}', 'Wall-Mounted Floating Shelf – Functional'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/shelf-02.jpg') }}" class="card-img-top"
+                        alt="Functional Floating Shelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wall-Mounted Floating Shelf – Functional</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, planter, stand, tiered, garden, indoor, display">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/plant-01.jpg') }}', 'Wooden Planter Stand – Tiered Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/plant-01.jpg') }}" class="card-img-top"
+                        alt="Tiered Wooden Planter Stand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Planter Stand – Tiered Design</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Room, divider, slatted, wood, panel, partition, screen">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/living/divider-01.jpg') }}', 'Room Divider – Slatted Wood Panel'); return false;">
+                    <img src="{{ url_for('static', filename='img/living/divider-01.jpg') }}" class="card-img-top"
+                        alt="Slatted Room Divider" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Room Divider – Slatted Wood Panel</h5>
+                    <p class="card-text text-muted small">Category: Living Room</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- bedroom -->
+
+
+
+
+
+        <div class="col idea-card" data-category="Bed, frame, platform, low, modern, minimal">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/bed-01.jpg') }}', 'Bed Frame – Platform Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/bed-01.jpg') }}" class="card-img-top"
+                        alt="Platform Bed Frame" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bed Frame – Platform Style</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bed, frame, loft, elevated, space-saving, study, bunk">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/bed-02.jpg') }}', 'Bed Frame – Loft Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/bed-02.jpg') }}" class="card-img-top"
+                        alt="Loft Style Bed Frame" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bed Frame – Loft Style</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bed, frame, storage, drawers, space-saving, underbed">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/bed-03.jpg') }}', 'Bed Frame – Storage Drawers Underneath'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/bed-03.jpg') }}" class="card-img-top"
+                        alt="Storage Bed Frame" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bed Frame – Storage Drawers Underneath</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Nightstand, floating, wall-mounted, bedside, space-saving">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/night-01.jpg') }}', 'Nightstand – Floating Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/night-01.jpg') }}" class="card-img-top"
+                        alt="Floating Nightstand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Nightstand – Floating Design</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Nightstand, drawer, cabinet, storage, bedside">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/night-02.jpg') }}', 'Nightstand – Drawer Cabinet'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/night-02.jpg') }}" class="card-img-top"
+                        alt="Drawer Nightstand Cabinet" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Nightstand – Drawer Cabinet</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Nightstand, crate-style, table, rustic, bedside">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/night-03.jpg') }}', 'Nightstand – Crate-Style Table'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/night-03.jpg') }}" class="card-img-top"
+                        alt="Crate Style Nightstand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Nightstand – Crate-Style Table</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wardrobe, sliding, doors, space-saving, closet, modern">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/wardrobe-01.jpg') }}', 'Wardrobe – Sliding Doors'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/wardrobe-01.jpg') }}" class="card-img-top"
+                        alt="Sliding Door Wardrobe" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wardrobe – Sliding Doors</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wardrobe, modular, units, customizable, closet, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/wardrobe-02.jpg') }}', 'Wardrobe – Modular Units'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/wardrobe-02.jpg') }}" class="card-img-top"
+                        alt="Modular Wardrobe Units" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wardrobe – Modular Units</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wardrobe, open, shelving, style, walk-in, display">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/wardrobe-03.jpg') }}', 'Wardrobe – Open Shelving Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/wardrobe-03.jpg') }}" class="card-img-top"
+                        alt="Open Shelving Wardrobe" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wardrobe – Open Shelving Style</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Vanity, table, wooden, tabletop, drawers, dressing, makeup">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/vanity-01.jpg') }}', 'Vanity Table – Wooden Tabletop with Drawers'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/vanity-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Vanity Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Vanity Table – Wooden Tabletop with Drawers</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col idea-card" data-category="Dressing, stool, wooden, cushion, seating, vanity">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/stool-01.jpg') }}', 'Dressing Stool – Wooden with Cushion'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/stool-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Dressing Stool" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Dressing Stool – Wooden with Cushion</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bed, headboard, paneled, modern, accent, wall">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/head-01.jpg') }}', 'Bed Headboard – Paneled Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/head-01.jpg') }}" class="card-img-top"
+                        alt="Paneled Headboard" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bed Headboard – Paneled Design</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bed, headboard, carved, accent, traditional, artistic">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/head-02.jpg') }}', 'Bed Headboard – Carved Accent'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/head-02.jpg') }}" class="card-img-top"
+                        alt="Carved Headboard" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bed Headboard – Carved Accent</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bed, headboard, upholstered, panel, fabric, plush, soft">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/head-03.jpg') }}', 'Bed Headboard – Upholstered Panel'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/head-03.jpg') }}" class="card-img-top"
+                        alt="Upholstered Headboard" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bed Headboard – Upholstered Panel</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Corner, shelves, decor, storage, space-saving, wall-mounted">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/shelf-01.jpg') }}', 'Corner Shelves – For Decor or Storage'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/shelf-01.jpg') }}" class="card-img-top"
+                        alt="Corner Shelves" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Corner Shelves – For Decor or Storage</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Jewelry, organizer, wall-mounted, display, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/jewelry-01.jpg') }}', 'Jewelry Organizer – Wall-Mounted'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/jewelry-01.jpg') }}" class="card-img-top"
+                        alt="Wall-Mounted Jewelry Organizer" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Jewelry Organizer – Wall-Mounted</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Jewelry, organizer, drawer, insert, storage, hidden">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/jewelry-02.jpg') }}', 'Jewelry Organizer – Drawer Insert'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/jewelry-02.jpg') }}" class="card-img-top"
+                        alt="Drawer Insert Jewelry Organizer" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Jewelry Organizer – Drawer Insert</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, mirror, frame, decorative, wall, accent">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/mirror-01.jpg') }}', 'Wooden Mirror Frame – Decorative'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/mirror-01.jpg') }}" class="card-img-top"
+                        alt="Decorative Wooden Mirror Frame" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Mirror Frame – Decorative</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, bench, foot, bed, seating, accent, bedroom">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/bedroom/bench-01.jpg') }}', 'Wooden Bench – Foot of the Bed'); return false;">
+                    <img src="{{ url_for('static', filename='img/bedroom/bench-01.jpg') }}" class="card-img-top"
+                        alt="Foot of Bed Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Bench – Foot of the Bed</h5>
+                    <p class="card-text text-muted small">Category: Bedroom</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Dining -->
+
+
+
+
+        <div class="col idea-card" data-category="Dining, table, farmhouse, rustic, long, traditional">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/table-01.jpg') }}', 'Dining Table – Farmhouse Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/table-01.jpg') }}" class="card-img-top"
+                        alt="Farmhouse Dining Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Dining Table – Farmhouse Style</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Dining, table, industrial, wood-metal, modern, loft">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/table-02.jpg') }}', 'Dining Table – Industrial Wood-Metal Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/table-02.jpg') }}" class="card-img-top"
+                        alt="Industrial Dining Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Dining Table – Industrial Wood-Metal Design</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Dining, table, extendable, space-saving, convertible, large">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/table-03.jpg') }}', 'Dining Table – Extendable'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/table-03.jpg') }}" class="card-img-top"
+                        alt="Extendable Dining Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Dining Table – Extendable</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Dining, chair, simple, wooden, seating, traditional">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/chair-01.jpg') }}', 'Dining Chair – Simple Wooden'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/chair-01.jpg') }}" class="card-img-top"
+                        alt="Simple Wooden Dining Chair" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Dining Chair – Simple Wooden</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Dining, chair, cushioned, seat, comfortable, upholstered">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/chair-02.jpg') }}', 'Dining Chair – Cushioned Seat'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/chair-02.jpg') }}" class="card-img-top"
+                        alt="Cushioned Dining Chair" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Dining Chair – Cushioned Seat</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bench, wooden, dining, seating, farmhouse, long">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/bench-01.jpg') }}', 'Bench – Wooden Dining Bench'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/bench-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Dining Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bench – Wooden Dining Bench</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Bar, stool, modern, minimalist, seating, tall">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/stool-01.jpg') }}', 'Bar Stool – Modern Minimalist'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/stool-01.jpg') }}" class="card-img-top"
+                        alt="Modern Minimalist Bar Stool" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Bar Stool – Modern Minimalist</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Kitchen, island, rolling, cart, mobile, portable, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/island-01.jpg') }}', 'Kitchen Island – Rolling Cart Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/island-01.jpg') }}" class="card-img-top"
+                        alt="Rolling Kitchen Island Cart" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Kitchen Island – Rolling Cart Style</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Kitchen, island, fixed, countertop, permanent, workspace">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/island-02.jpg') }}', 'Kitchen Island – Fixed Countertop Unit'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/island-02.jpg') }}" class="card-img-top"
+                        alt="Fixed Kitchen Island Unit" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Kitchen Island – Fixed Countertop Unit</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Floating, kitchen, shelves, open, storage, display, wall-mounted">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/shelf-01.jpg') }}', 'Floating Kitchen Shelves – Open Storage'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/shelf-01.jpg') }}" class="card-img-top"
+                        alt="Floating Kitchen Shelves" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Floating Kitchen Shelves – Open Storage</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Cabinet, organizer, pull-out, drawers, kitchen, storage, maximizing">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/organizer-01.jpg') }}', 'Cabinet Organizer – Pull-out Drawers'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/organizer-01.jpg') }}" class="card-img-top"
+                        alt="Pull-out Cabinet Organizer" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Cabinet Organizer – Pull-out Drawers</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Spice, rack, wall-mounted, cabinet, storage, kitchen, small">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/spice-01.jpg') }}', 'Spice Rack – Wall-Mounted or Cabinet Door'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/spice-01.jpg') }}" class="card-img-top"
+                        alt="Wall-Mounted Spice Rack" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Spice Rack – Wall-Mounted or Cabinet Door</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Floating, kitchen, shelves, open, wall-mounted, display">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/shelf-02.jpg') }}', 'Floating Kitchen Shelves'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/shelf-02.jpg') }}" class="card-img-top"
+                        alt="Floating Kitchen Shelves" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Floating Kitchen Shelves</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Open, shelving, cabinet, rustic, farmhouse, kitchen, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/cabinet-01.jpg') }}', 'Open Shelving Cabinet – Rustic'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/cabinet-01.jpg') }}" class="card-img-top"
+                        alt="Open Shelving Cabinet" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Open Shelving Cabinet – Rustic</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wine, rack, wall-mounted, storage, display, bottle">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/wine-01.jpg') }}', 'Wine Rack – Wall-Mounted'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/wine-01.jpg') }}" class="card-img-top"
+                        alt="Wall Mounted Wine Rack" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wine Rack – Wall-Mounted</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Buffet, sideboard, storage, cabinet, dining, hutch">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/sideboard-01.jpg') }}', 'Buffet / Sideboard – Storage Cabinet'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/sideboard-01.jpg') }}" class="card-img-top"
+                        alt="Buffet/Sideboard Cabinet" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Buffet / Sideboard – Storage Cabinet</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Cutlery, utensil, organizer, wooden, tray, drawer, kitchen">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/utensil-01.jpg') }}', 'Cutlery / Utensil Organizer – Wooden Tray'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/utensil-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Cutlery Organizer" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Cutlery / Utensil Organizer – Wooden Tray</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Pot, rack, hanging, wooden, kitchen, storage, ceiling">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/pot-01.jpg') }}', 'Pot Rack – Hanging Wooden Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/pot-01.jpg') }}" class="card-img-top"
+                        alt="Hanging Pot Rack" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Pot Rack – Hanging Wooden Design</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Knife, holder, magnetic, wooden, block, kitchen, safety">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/knife-01.jpg') }}', 'Knife Holder – Magnetic Wooden Block'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/knife-01.jpg') }}" class="card-img-top"
+                        alt="Magnetic Knife Holder" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Knife Holder – Magnetic Wooden Block</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Breakfast, nook, bench, dining, kitchen, corner, seating">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/nook-01.jpg') }}', 'Breakfast Nook Bench'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/nook-01.jpg') }}" class="card-img-top"
+                        alt="Breakfast Nook Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Breakfast Nook Bench</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Foldable, dining, table, space-saving, small apartment">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/table-04.jpg') }}', 'Foldable Dining Table'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/table-04.jpg') }}" class="card-img-top"
+                        alt="Foldable Dining Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Foldable Dining Table</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Pedestal, dining, table, round, compact, single base">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/kitchen/table-05.jpg') }}', 'Pedestal Dining Table – Round'); return false;">
+                    <img src="{{ url_for('static', filename='img/kitchen/table-05.jpg') }}" class="card-img-top"
+                        alt="Round Pedestal Dining Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Pedestal Dining Table – Round</h5>
+                    <p class="card-text text-muted small">Category: Dining/Kitchen</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Console, table, slim, entryway, hallway, narrow, accent">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/console-01.jpg') }}', 'Console Table – Slim'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/console-01.jpg') }}" class="card-img-top"
+                        alt="Slim Console Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Console Table – Slim</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Console, table, floating, entryway, wall-mounted, modern">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/console-02.jpg') }}', 'Console Table – Floating'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/console-02.jpg') }}" class="card-img-top"
+                        alt="Floating Console Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Console Table – Floating</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Console, table, reclaimed, wood, rustic, entryway, hallway">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/console-03.jpg') }}', 'Console Table – Reclaimed Wood'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/console-03.jpg') }}" class="card-img-top"
+                        alt="Reclaimed Wood Console Table" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Console Table – Reclaimed Wood</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Coat, rack, wall-mounted, pegs, hooks, entryway, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/coat-01.jpg') }}', 'Coat Rack – Wall-Mounted Pegs'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/coat-01.jpg') }}" class="card-img-top"
+                        alt="Wall Mounted Coat Rack" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Coat Rack – Wall-Mounted Pegs</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Coat, rack, standing, tree-style, floor, hall, hanger">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/coat-02.jpg') }}', 'Coat Rack – Standing Tree-Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/coat-02.jpg') }}" class="card-img-top"
+                        alt="Standing Tree Style Coat Rack" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Coat Rack – Standing Tree-Style</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Shoe, bench, storage, seating, entryway, under, cabinet">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/shoe-01.jpg') }}', 'Shoe Bench – Storage Underneath'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/shoe-01.jpg') }}" class="card-img-top"
+                        alt="Shoe Storage Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Shoe Bench – Storage Underneath</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Shoe, rack, open, shelves, storage, entryway, display">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/shoe-02.jpg') }}', 'Shoe Rack – Open Shelves'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/shoe-02.jpg') }}" class="card-img-top"
+                        alt="Open Shoe Rack" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Shoe Rack – Open Shelves</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Key, holder, small, wall, unit, organizer, entryway">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/key-01.jpg') }}', 'Key Holder – Small Wall Unit'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/key-01.jpg') }}" class="card-img-top"
+                        alt="Wall Unit Key Holder" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Key Holder – Small Wall Unit</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Mail, organizer, wooden, slots, entryway, desk, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/mail-01.jpg') }}', 'Mail Organizer – Wooden Slots'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/mail-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Mail Organizer" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Mail Organizer – Wooden Slots</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Umbrella, stand, wooden, box, cylinder, entryway, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/umbrella-01.jpg') }}', 'Umbrella Stand – Wooden Box or Cylinder'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/umbrella-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Umbrella Stand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Umbrella Stand – Wooden Box or Cylinder</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Entryway, shelf, decor, storage, wall-mounted, accent">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/shelf-01.jpg') }}', 'Entryway Shelf – For Décor or Storage'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/shelf-01.jpg') }}" class="card-img-top"
+                        alt="Entryway Shelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Entryway Shelf – For Décor or Storage</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Mirror, shelf, entryway, wall-mounted, functional, decor">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/mirror-01.jpg') }}', 'Mirror with Shelf'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/mirror-01.jpg') }}" class="card-img-top"
+                        alt="Mirror with Shelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Mirror with Shelf</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wall, hooks, decorative, designs, coat, bags, entryway">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/hooks-01.jpg') }}', 'Wall Hooks – Decorative Designs'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/hooks-01.jpg') }}" class="card-img-top"
+                        alt="Decorative Wall Hooks" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wall Hooks – Decorative Designs</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wall-mounted, cubbies, small, items, storage, display, entryway">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/cubby-01.jpg') }}', 'Wall-Mounted Cubbies – For Small Items'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/cubby-01.jpg') }}" class="card-img-top"
+                        alt="Wall Mounted Cubbies" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wall-Mounted Cubbies – For Small Items</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Corner, bench, storage, entryway, seating, small space">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/entry/corner-01.jpg') }}', 'Corner Bench – Storage Underneath'); return false;">
+                    <img src="{{ url_for('static', filename='img/entry/corner-01.jpg') }}" class="card-img-top"
+                        alt="Corner Storage Bench" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Corner Bench – Storage Underneath</h5>
+                    <p class="card-text text-muted small">Category: Entryway/Hallway</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Plant, stand, tiered, wooden, design, indoor, garden, display">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/plant-01.jpg') }}', 'Plant Stand – Tiered Wooden Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/plant-01.jpg') }}" class="card-img-top"
+                        alt="Tiered Wooden Plant Stand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Plant Stand – Tiered Wooden Design</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Plant, stand, cube, minimalist, modern, indoor">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/plant-02.jpg') }}', 'Plant Stand – Minimalist Cube Style'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/plant-02.jpg') }}" class="card-img-top"
+                        alt="Minimalist Cube Plant Stand" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Plant Stand – Minimalist Cube Style</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Floating, plant, shelf, wall-mounted, indoor, decor">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/plant-03.jpg') }}', 'Floating Plant Shelf – Wall-Mounted'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/plant-03.jpg') }}" class="card-img-top"
+                        alt="Floating Plant Shelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Floating Plant Shelf – Wall-Mounted</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wall, clock, rustic, wooden, farmhouse, decor, timepiece">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/clock-01.jpg') }}', 'Wall Clock – Rustic Wooden'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/clock-01.jpg') }}" class="card-img-top"
+                        alt="Rustic Wooden Wall Clock" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wall Clock – Rustic Wooden</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wall, clock, minimalist, modern, sleek, simple">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/clock-02.jpg') }}', 'Wall Clock – Minimalist Modern'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/clock-02.jpg') }}" class="card-img-top"
+                        alt="Minimalist Wall Clock" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wall Clock – Minimalist Modern</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Decorative, wooden, tray, serving, decor, coffee table">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/tray-01.jpg') }}', 'Decorative Wooden Tray – Serving or Décor'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/tray-01.jpg') }}" class="card-img-top"
+                        alt="Decorative Wooden Tray" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Decorative Wooden Tray – Serving or Décor</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, candle, holder, tabletop, decor, carved">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/candle-01.jpg') }}', 'Wooden Candle Holder – Tabletop'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/candle-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Candle Holder" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Candle Holder – Tabletop</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, lamp, base, carved, geometric, lighting, table">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/lamp-01.jpg') }}', 'Wooden Lamp Base – Carved or Geometric'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/lamp-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Lamp Base" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Lamp Base – Carved or Geometric</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, picture, frame, wall-mounted, display, photo">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/frame-01.jpg') }}', 'Wooden Picture Frame – Wall-Mounted'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/frame-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Picture Frame" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Picture Frame – Wall-Mounted</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, magazine, holder, tabletop, floor, rack, storage">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/magazine-01.jpg') }}', 'Wooden Magazine Holder – Tabletop or Floor'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/magazine-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Magazine Holder" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Magazine Holder – Tabletop or Floor</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, storage, box, carved, lid, chest, decor, keepsake">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/box-01.jpg') }}', 'Wooden Storage Box – Carved Lid'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/box-01.jpg') }}" class="card-img-top"
+                        alt="Carved Wooden Storage Box" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Storage Box – Carved Lid</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, storage, chest, large, floor, trunk, blanket">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/chest-01.jpg') }}', 'Wooden Storage Chest – Large Floor Piece'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/chest-01.jpg') }}" class="card-img-top"
+                        alt="Large Wooden Storage Chest" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Storage Chest – Large Floor Piece</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, drawer, organizer, kitchen, desk, cutlery, utensil">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/drawer-01.jpg') }}', 'Wooden Drawer Organizer – Kitchen or Desk'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/drawer-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Drawer Organizer" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Drawer Organizer – Kitchen or Desk</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Foldable, wall, desk, compact, workspace, study, small apartment">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/desk-01.jpg') }}', 'Foldable Wall Desk – Compact Workspace'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/desk-01.jpg') }}" class="card-img-top"
+                        alt="Foldable Wall Desk" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Foldable Wall Desk – Compact Workspace</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wall-mounted, bookshelf, floating, design, minimal, display">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/book-01.jpg') }}', 'Wall-Mounted Bookshelf – Floating Design'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/book-01.jpg') }}" class="card-img-top"
+                        alt="Floating Bookshelf" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wall-Mounted Bookshelf – Floating Design</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, crate, storage, stackable, rustic, box, shelving">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/crate-01.jpg') }}', 'Wooden Crate Storage – Stackable'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/crate-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Crate Storage" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Crate Storage – Stackable</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, wine, crate, display, decorative, storage, bottle">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/wine-01.jpg') }}', 'Wooden Wine Crate Display – Decorative'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/wine-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Wine Crate Display" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Wine Crate Display – Decorative</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, toy, box, storage, chest, playroom, bedroom">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/toy-01.jpg') }}', 'Wooden Toy Box – Bedroom or Playroom'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/toy-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Toy Box" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Toy Box – Bedroom or Playroom</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, bulletin, pin, board, office, entryway, notice">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/board-01.jpg') }}', 'Wooden Bulletin / Pin Board – Office or Entryway'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/board-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Bulletin Board" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Bulletin / Pin Board – Office or Entryway</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col idea-card" data-category="Wooden, decorative, panel, geometric, wall, art, accent">
+            <div class="card h-100 shadow-sm border-0">
+                <a href="#"
+                    onclick="openImageModal('{{ url_for('static', filename='img/decor/panel-01.jpg') }}', 'Wooden Decorative Panel – Geometric Wall Art'); return false;">
+                    <img src="{{ url_for('static', filename='img/decor/panel-01.jpg') }}" class="card-img-top"
+                        alt="Wooden Decorative Panel" style="height: 200px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Wooden Decorative Panel – Geometric Wall Art</h5>
+                    <p class="card-text text-muted small">Category: Decor/Small Furniture</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Simple JavaScript function to filter the idea cards based on search input
+    function filterIdeas() {
+        // 1. Get the search input value and convert it to lowercase
+        const searchInput = document.getElementById('ideaSearch').value.toLowerCase();
+        // 2. Get all the idea card elements
+        const cards = document.querySelectorAll('.idea-card');
+
+        cards.forEach(card => {
+            // 3. Get the text from the card's title and its data-category attribute
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const category = card.getAttribute('data-category').toLowerCase();
+
+            // 4. Check if the search input is found in the title OR the category data
+            if (title.includes(searchInput) || category.includes(searchInput)) {
+                card.style.display = 'block'; // Show the card (uses Bootstrap's block layout)
+            } else {
+                card.style.display = 'none'; // Hide the card
+            }
+        });
+    }
+
+    // Initialize the search filter on page load (in case a search term was passed via URL, though not implemented here)
+    document.addEventListener('DOMContentLoaded', filterIdeas);
+
+    function openImageModal(imageSrc, ideaTitle) {
+        // 1. Get references to the modal elements
+        const modalImage = document.getElementById('modalImage');
+        const modalLabel = document.getElementById('imageModalLabel');
+        const quotationLink = document.getElementById('quotationLink');
+
+        // 2. Set the content of the modal
+        modalImage.src = imageSrc;
+        modalLabel.textContent = ideaTitle;
+
+        // 3. Set the contact link (no download attribute needed)
+        quotationLink.href = "{{ url_for('contact') }}";
+
+        // 4. Show the modal using Bootstrap's JavaScript method
+        const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+        imageModal.show();
+    }
+</script>
+
+<!-- Fixed Modal - Removed download attribute and updated ID -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Design Idea Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid rounded" alt="Large View of Carpentry Idea">
+            </div>
+            <div class="modal-footer justify-content-center">
+                <!-- Fixed: Removed download attribute and changed ID -->
+                <a id="quotationLink" href="{{ url_for('contact') }}" class="btn btn-primary">
+                    <i class="fas fa-file-alt me-2"></i> Get Quotation
+                </a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

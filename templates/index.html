@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Manjunath Carpentry{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-12 col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">Quality Carpentry & Woodwork Solutions</h1>
+                <p class="lead mb-4">Crafting beautiful, durable furniture and woodwork with precision and care.
+                    Transforming your spaces with expert craftsmanship for over 15 years.</p>
+                <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                    <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg px-4">Get Free Quote</a>
+                    <a href="{{ url_for('portfolio') }}" class="btn btn-outline-light btn-lg px-4">View Our Work</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Our Services</h2>
+                <p class="lead">Professional carpentry services for homes and businesses</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <!-- Service 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card service-card h-100 text-center">
+                    <div class="card-body p-4">
+                        <i class="bi bi-house-door display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Custom Furniture</h5>
+                        <p class="card-text">Bespoke furniture pieces tailored to your space and style requirements.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Service 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card service-card h-100 text-center">
+                    <div class="card-body p-4">
+                        <i class="bi bi-door-closed display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Cabinet Making</h5>
+                        <p class="card-text">Custom cabinets for kitchen, bathroom, and storage solutions.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Service 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card service-card h-100 text-center">
+                    <div class="card-body p-4">
+                        <i class="bi bi-tools display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Wood Repair</h5>
+                        <p class="card-text">Expert repair and restoration of damaged wooden furniture and structures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="{{ url_for('static', filename='image/card.png') }}" alt="About Us"
+                    class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6 text-center text-lg-start">
+                <h2 class="about-title">About Manjunath Carpenter</h2>
+                <p class="lead mb-4">With over 15 years of experience in woodworking and carpentry, we take pride in
+                    delivering exceptional quality and craftsmanship.</p>
+                <p class="mb-4">Our team of skilled carpenters combines traditional techniques with modern tools to
+                    create beautiful, functional pieces that stand the test of time.</p>
+                <div class="row text-start">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Quality Materials</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Expert Craftsmanship</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Timely Delivery</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Affordable Pricing</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Free Consultation</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Warranty Included</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg mt-3">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Why Choose Us</h2>
+                <p class="lead">Experience the difference with our professional approach</p>
+            </div>
+        </div>
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-award display-4 text-primary mb-3"></i>
+                    <h5>Quality Guarantee</h5>
+                    <p>We use only the finest materials and provide warranty on all our work.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-clock display-4 text-primary mb-3"></i>
+                    <h5>On-Time Delivery</h5>
+                    <p>We respect your time and ensure projects are completed as promised.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4">
+                    <i class="bi bi-currency-dollar display-4 text-primary mb-3"></i>
+                    <h5>Fair Pricing</h5>
+                    <p>Competitive prices with no hidden costs. Free estimates provided.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Review Sections -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="customer-review">What Our Customer Saying About Us?</h2>
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="review card text-center" style="width: 30rem;">
+                            <img src="{{ url_for('static' , filename='image/review-1.png') }}"
+                                class="card-img-center" alt="Customer review " style="margin: 5%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="review card text-center" style="width: 30rem;">
+                            <img src="{{ url_for('static' , filename='image/review-2.png') }}"
+                                class="card-img-center" alt="Customer review" style="margin: 5%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Manjunath Carpentry{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section class="hero">
+    <div class="container text-center">
+        {% if message %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        <h1 class="display-4 fw-bold">Contact Us</h1>
+        <p class="lead">Get in touch for a free consultation</p>
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <form method="POST" action="/contact">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="full_name" class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" id="full_name" name="full_name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone_number" class="form-label">Phone *</label>
+                                    <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                </div>
+                                <div class="col-12">
+                                    <label for="service_needed" class="form-label">Service Needed</label>
+                                    <select class="form-select" id="service_needed" name="service_needed">
+                                        <option value="Custom Furniture">Custom Furniture</option>
+                                        <option value="Cabinet Making">Cabinet Making</option>
+                                        <option value="Wood Repair">Wood Repair</option>
+                                        <option value="Interior Plywood">Interior Plywood works</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="project_details" class="form-label">Project Details</label>
+                                    <textarea class="form-control" id="project_details" name="project_details" rows="4"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="row mt-5">
+            <div class="col-md-4 text-center mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="bi bi-geo-alt display-4 text-primary mb-3"></i>
+                        <h5>Visit Us</h5>
+                        <p><a href="https://maps.app.goo.gl/pQToSDa3Wa9cypvy7">Location</a><br>Vinayak nagar, Shimoga</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="bi bi-telephone display-4 text-primary mb-3"></i>
+                        <h5>Call Us</h5>
+                        <p>+91 9845250725<br>+91 9731911755</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="bi bi-envelope display-4 text-primary mb-3"></i>
+                        <h5>Email Us</h5>
+                        <p>mc7192230@gmail.com<br>gowthamcm9731@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
